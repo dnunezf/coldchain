@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "fT9QwDmwBabpc+XOZM4lJTHB7MEw4ypczKmNMBCdSXA=",
+  "Source": "ColdChain.Api",
+  "BasePath": "_content/ColdChain.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

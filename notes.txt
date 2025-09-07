@@ -1,0 +1,8 @@
+De momento, se requiere información JOLT en lo siguiente:
+
+appsettings.Development.json
+
+Secret de jolt:
+
+dotnet user-secrets init
+dotnet user-secrets set "Jolt:ApiKey" "REPLACE_ME"
