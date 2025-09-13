@@ -6,3 +6,5 @@ Secret de jolt:
 
 dotnet user-secrets init
 dotnet user-secrets set "Jolt:ApiKey" "REPLACE_ME"
+
+Recordar que hicimos un usuario FakeJoltClient. El siguiente paso será reemplazar FakeJoltClient por JoltApiClient o Webhook, según credenciales y capacidades reales.

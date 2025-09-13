@@ -21,12 +21,19 @@ public sealed class AppDbContext : DbContext
             e.HasIndex(x => x.ExternalId).IsUnique();
             e.Property(x => x.Name).HasMaxLength(200).IsRequired();
         });
+        // OnModelCreating
         b.Entity<Sensor>(e =>
         {
             e.HasKey(x => x.Id);
             e.Property(x => x.Unit).HasMaxLength(8).IsRequired();
             e.HasOne(x => x.Device).WithMany(d => d.Sensors).HasForeignKey(x => x.DeviceId);
+            e.HasOne(x => x.RefrigerationUnit)
+              .WithMany()
+              .HasForeignKey(x => x.RefrigerationUnitId)
+              .OnDelete(DeleteBehavior.SetNull); 
         });
+
+
         b.Entity<RefrigerationUnit>(e =>
         {
             e.HasKey(x => x.Id);

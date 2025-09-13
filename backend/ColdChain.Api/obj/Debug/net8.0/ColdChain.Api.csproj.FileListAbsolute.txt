@@ -167,3 +167,4 @@
 /home/dnunezf/Documents/coldchain/backend/ColdChain.Api/obj/Debug/net8.0/ColdChain.Api.pdb
 /home/dnunezf/Documents/coldchain/backend/ColdChain.Api/obj/Debug/net8.0/ColdChain.Api.genruntimeconfig.cache
 /home/dnunezf/Documents/coldchain/backend/ColdChain.Api/obj/Debug/net8.0/ref/ColdChain.Api.dll
+/home/dnunezf/Documents/coldchain/backend/ColdChain.Api/obj/Debug/net8.0/ColdChain.Api.sourcelink.json

@@ -14,8 +14,9 @@ public static class DataSeeder
         db.RefrigerationUnits.AddRange(unit1, unit2);
 
         var dev = new Device { ExternalId = "DEV-LOCAL-001", Name = "Jolt Mock Device" };
-        var sTemp = new Sensor { Device = dev, Type = SensorType.Temperature, Unit = "°C" };
-        var sHum = new Sensor { Device = dev, Type = SensorType.Humidity, Unit = "%" };
+        // When creating sensors, assign them to a unit
+        var sTemp = new Sensor { Device = dev, Type = SensorType.Temperature, Unit = "°C", RefrigerationUnit = unit1 };
+        var sHum = new Sensor { Device = dev, Type = SensorType.Humidity, Unit = "%", RefrigerationUnit = unit1 };
         db.Sensors.AddRange(sTemp, sHum);
 
         db.Thresholds.AddRange(
