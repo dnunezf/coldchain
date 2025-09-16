@@ -8,3 +8,23 @@ dotnet user-secrets init
 dotnet user-secrets set "Jolt:ApiKey" "REPLACE_ME"
 
 Recordar que hicimos un usuario FakeJoltClient. El siguiente paso será reemplazar FakeJoltClient por JoltApiClient o Webhook, según credenciales y capacidades reales.
+
+"Jolt": {
+  "Mode": "Fake",          // Fake | PullApi | Webhook
+  "BaseUrl": "https://api.jolt.com",
+  "ApiKey": ""
+}
+
+Envía estas preguntas puntuales al proveedor:
+
+Base URL y versión de API.
+
+Auth: tipo de token, formato del header, caducidad.
+
+Endpoint para lecturas: ruta, filtros (since, deviceId), paginación, límites por minuto.
+
+Esquema JSON de lectura: campos, unidades, zona horaria.
+
+Webhooks: URL de prueba, formato del evento, firma (HMAC o similar), reintentos, idempotency key.
+
+Catálogo de dispositivos y sensores: cómo mapear DeviceExternalId y tipo de sensor.
