@@ -45,11 +45,80 @@ Edit `appsettings.Development.json`:
     "WebhookSecret": ""
   }
 }
+```
+
+---
 
 ## Setup
+
+# Database
+
+```bash
+cd backend/ColdChain.Api
+dotnet tool install --global dotnet-ef            # once
+dotnet ef migrations add Initial                  # first time
+dotnet ef database update
+```
+
+# Build And Run
 
 ```bash
 cd backend/ColdChain.Api
 dotnet build
-dotnet ef database update   # only if you changed migrations
 dotnet run
+```
+
+API will be available at:
+
+```bash
+http://localhost:5277/swagger
+```
+
+---
+
+## Health and Info
+
+```bash
+curl http://localhost:5277/api/health
+curl http://localhost:5277/api/jolt/info
+```
+
+---
+
+## Units
+
+```bash
+curl http://localhost:5277/api/units
+```
+
+---
+
+## Thresholds
+
+```bash
+curl http://localhost:5277/api/thresholds/1
+```
+
+Update threshold:
+
+```bash
+curl -X PUT http://localhost:5277/api/thresholds \
+  -H "Content-Type: application/json" \
+  -d '{"refrigerationUnitId":1,"metric":1,"min":-20,"max":-10}'
+```
+
+---
+
+## Readings
+
+```bash
+curl "http://localhost:5277/api/readings?unitId=1&from=2025-09-14T00:00:00Z"
+```
+
+---
+
+## Alerts
+
+```bash
+curl "http://localhost:5277/api/alerts?unitId=1&status=1"
+```
