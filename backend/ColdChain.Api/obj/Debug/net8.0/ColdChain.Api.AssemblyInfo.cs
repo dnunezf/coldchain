@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ColdChain.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f45a01c9f0570da132c6ff756f573fd657d1c279")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8ad4e39d7898d92ffaa3e7da7dbba228e1800c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("ColdChain.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ColdChain.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
