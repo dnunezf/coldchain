@@ -25,3 +25,6 @@ export type Alert = {
   closedAtUtc?: string | null;
   status: 1 | 2;
 };
+
+export const fmtDate = (iso: string) =>
+  new Date(iso).toLocaleString([], { hour12: false });
