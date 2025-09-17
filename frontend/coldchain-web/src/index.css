@@ -366,3 +366,63 @@ h1 + .filters,
 .page-head + .card {
   margin-top: -4px;
 }
+
+/* Error bar */
+.errorbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #ef444433;
+  color: #ffd6d6;
+  border-bottom: 1px solid #ef444455;
+  backdrop-filter: blur(4px);
+}
+.errorbar button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  padding: 12px 14px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+.toast-ok {
+  background: #10b98133;
+  color: #d3ffe9;
+  border: 1px solid #10b98166;
+}
+.toast-warn {
+  background: #f59e0b33;
+  color: #fff1c7;
+  border: 1px solid #f59e0b66;
+}
+.toast-danger {
+  background: #ef444433;
+  color: #ffd6d6;
+  border: 1px solid #ef444466;
+}
+.toast-info {
+  background: #3aa0ff33;
+  color: #d7ebff;
+  border: 1px solid #3aa0ff66;
+}
+
+/* Zoom/pan UX */
+.zoom-cursor {
+  cursor: crosshair;
+}

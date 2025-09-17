@@ -5,6 +5,15 @@ export const api = axios.create({
   timeout: 10000,
 });
 
+api.interceptors.response.use(
+  (r) => r,
+  (err) => {
+    const msg = err?.response?.data?.message || err?.message || "Network error";
+    window.dispatchEvent(new CustomEvent("api-error", { detail: msg }));
+    return Promise.reject(err);
+  }
+);
+
 export type Unit = { id: number; name: string; location: string };
 export type Threshold = {
   id: number;
@@ -28,3 +37,7 @@ export type Alert = {
 
 export const fmtDate = (iso: string) =>
   new Date(iso).toLocaleString([], { hour12: false });
+
+// simple localStorage helpers
+export const savePref = (k: string, v: string) => localStorage.setItem(k, v);
+export const loadPref = (k: string, d = "") => localStorage.getItem(k) ?? d;

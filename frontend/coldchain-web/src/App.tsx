@@ -4,11 +4,13 @@ import Dashboard from "./pages/Dashboard";
 import Units from "./pages/Units";
 import Thresholds from "./pages/Thresholds";
 import Alerts from "./pages/Alerts";
+import ErrorBar from "./components/ErrorBar";
 
 export default function App() {
   return (
     <div className="app">
       <Navbar />
+      <ErrorBar />
       <main className="container">
         <Routes>
           <Route path="/" element={<Dashboard />} />

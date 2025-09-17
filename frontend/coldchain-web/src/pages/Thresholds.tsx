@@ -3,6 +3,7 @@ import { api } from "../api/client";
 import type { Unit, Threshold } from "../api/client";
 import Loader from "../components/Loader";
 import EmptyState from "../components/EmptyState";
+import Toast from "../components/Toast";
 
 export default function Thresholds() {
   const [units, setUnits] = useState<Unit[]>([]);
@@ -13,6 +14,10 @@ export default function Thresholds() {
   const [max, setMax] = useState<number>(0);
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [toast, setToast] = useState<{
+    t: string;
+    tone: "ok" | "warn" | "danger" | "info";
+  } | null>(null);
 
   useEffect(() => {
     api.get<Unit[]>("/api/units").then((r) => {
@@ -31,8 +36,13 @@ export default function Thresholds() {
   };
   useEffect(load, [unitId]);
 
+  const valid = unitId && !Number.isNaN(min) && !Number.isNaN(max) && min < max;
+
   const upsert = async () => {
-    if (!unitId) return;
+    if (!unitId || !valid) {
+      setToast({ t: "Please enter a valid range (min < max).", tone: "warn" });
+      return;
+    }
     setBusy(true);
     try {
       await api.put("/api/thresholds", {
@@ -43,7 +53,10 @@ export default function Thresholds() {
       });
       setMin(0);
       setMax(0);
+      setToast({ t: "Threshold saved.", tone: "ok" });
       load();
+    } catch {
+      setToast({ t: "Failed to save threshold.", tone: "danger" });
     } finally {
       setBusy(false);
     }
@@ -101,9 +114,14 @@ export default function Thresholds() {
               />
             </label>
           </div>
-          <button disabled={busy} onClick={upsert}>
+          <button disabled={busy || !valid} onClick={upsert}>
             Save
           </button>
+          {!valid && (
+            <div className="muted" style={{ marginTop: 8 }}>
+              Min must be less than Max.
+            </div>
+          )}
         </div>
 
         <div className="card">
@@ -126,6 +144,14 @@ export default function Thresholds() {
           )}
         </div>
       </div>
+
+      {toast && (
+        <Toast
+          text={toast.t}
+          tone={toast.tone}
+          onClose={() => setToast(null)}
+        />
+      )}
     </section>
   );
 }
