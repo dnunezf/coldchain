@@ -51,7 +51,7 @@ Edit `appsettings.Development.json`:
 
 ## Setup
 
-# Database
+Database
 
 ```bash
 cd backend/ColdChain.Api
@@ -60,7 +60,7 @@ dotnet ef migrations add Initial                  # first time
 dotnet ef database update
 ```
 
-# Build And Run
+Build And Run
 
 ```bash
 cd backend/ColdChain.Api
